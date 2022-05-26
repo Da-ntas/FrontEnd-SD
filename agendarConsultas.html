@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="agendamentoConsultas()">
+    <form id="formAgendamento">
+        <label for="dataAgendamento">
+            <input type="date" name="dataAgendamento" id="dataAgendamento" placeholder="Data para agendamento" required>
+        </label>
+        <label for="horarioAgendado">
+            <input type="time" name="horarioAgendado" id="horarioAgendado" placeholder="Horario desejado" required>
+        </label>
+        <label for="unidadeAgendado">
+            <select name="unidadeAgendado" id="unidadeAgendado" required>
+                <option value="Unidade" selected disabled>Unidade</option>
+            </select>
+        </label>
+        <label for="enderecoAgendado">
+            <select name="enderecoAgendado" id="enderecoAgendado" required>
+            </select>
+        </label>
+        <label for="tipoExame">
+            <select name="tipoExame" id="tipoExame" required>
+                <option value="tipoExame" selected disabled>Tipo Exame</option>
+            </select>
+        </label>
+        <label for="nomMedicoAgendado">
+            <select name="nomMedicoAgendado" id="nomMedicoAgendado" required>
+                <option value="nomMedicoAgendado" selected disabled>nomMedicoAgendado</option>
+            </select>
+        </label>
+
+        <input type="submit" id="submitAgendamento" value="Agendar">
+    </form>
+
+    <script src="./js/agendarConsultas.js"></script>
+</body>
+</html>

@@ -9,7 +9,8 @@ async function carregarUF(){
     UF.forEach(element => {
         let options = document.createElement("option")
         let nomUF = element.nomUF;
-        options.value = nomUF;
+        let codUF = element.codeUf;
+        options.value = codUF;
         options.text = nomUF;
 
         uf.add(options);
@@ -53,7 +54,8 @@ function carregarCidades(cidades){
     cidades.forEach(element => {
         let options = document.createElement("option")
         let nomCidades = element.nomCidades;
-        options.value = nomCidades;
+        let codCidades = element.codeCidades;
+        options.value = codCidades;
         options.text = nomCidades;
 
         city.add(options);
@@ -68,13 +70,13 @@ document.getElementById("uf").addEventListener("change", async (event) => {
     let uf = document.getElementById("uf").value;
     let reqCidades;
     switch (uf){
-        case 'SP':
+        case '1':
             reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/1").then((response) => {return (response)})
             break;
-        case 'RJ':
+        case '2':
             reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/2").then((response) => {return (response)})
             break;
-        case 'MG':
+        case '3':
             reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/3").then((response) => {return (response)})
             break;
         default:
@@ -103,6 +105,7 @@ document.getElementById("form").addEventListener("submit", async (event) => {
         nomConvenio: document.getElementById("convenio").value
     }
 
+    
     let makePost = fetch("http://localhost:8080/user", {
     method: 'POST',
     headers: {
@@ -149,8 +152,16 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
     else{
         let user = await (await teste).json();
         if(user.password == password){
-            window.alert("Conta encontrada! Levando para sua página");
+            console.log(user)
+            // window.alert("Conta encontrada! Levando para sua página");
             document.getElementById("formlogin").reset();
+            window.sessionStorage.setItem("userName", user.nome);
+            window.sessionStorage.setItem("userCode", user.code);
+            window.sessionStorage.setItem("userUf", user.uf);
+            window.sessionStorage.setItem("userCidade", user.cidade);
+            window.sessionStorage.setItem("userConvenio", user.convenio);
+            window.sessionStorage.setItem("userNomConvenio", user.nomConvenio);
+            window.location.assign('./logado.html');
         }
     }
 })

@@ -4,65 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
 <body onload="carregarUF(), carregarConvenio()">
 
-    <div div="formulariocadastro">
-    <form id="form">
-        <label for="name">
-            <input type="text" name="name" id="name" placeholder="Nome completo" required>
-        </label>
-        <label for="email">
-            <input type="email" name="email" id="email" placeholder="E-mail" required>
-        </label>
-        <label for="password">
-            <input type="password" name="password" id="password" placeholder="Senha" required>
-        </label>
-        <label for="dataNasc">
-            <input type="date" name="dataNasc" id="dataNasc" placeholder="Data de nascimento" required>
-        </label>
-        <label for="cpf">
-            <input type="number" name="cpf" id="cpf" placeholder="CPF: 12345678900" required>
-        </label>
-        <label for="uf">
-            <select name="uf" id="uf" required>
-                <option value="" selected disabled>UF</option>
-            </select>
-        </label>
-        <label for="cidade">
-            <select name="cidade" id="cidade" required>
-                <option value="Cidade" selected disabled>Cidade</option>
-            </select>
-        </label>
-        <label for="convenio">
-            <select name="convenio" id="convenio" required>
-                <option value="" selected disabled>Convenio</option>
-            </select>
-        </label>
-        <label for="nomConvenio">
-            <input type="text" name="nomConvenio" id="nomConvenio" placeholder="Nome do convenio">
-        </label>
-        
+    <!-- HEADER DO SITE -->
+    <div class="header">
 
-        <input type="submit" value="Enviar" id="enviar">
-    </form>
+        <!-- FORMULARIO DE LOGIN -->
+        <div class="formulariologin">
+            <form id="formlogin">
+                <label for="emailogin">
+                    <fieldset>
+                        <legend>E-mail de usuário</legend>
+                    </fieldset>
+                    <input class="inputLogin" type="email" name="emailogin" id="emailogin" required>
+                </label>
+                <label for="passwordlogin">
+                    <fieldset>
+                        <legend>Senha de usuário</legend>
+                    </fieldset>
+                    <input class="inputLogin" type="password" name="passwordlogin" id="passwordlogin" required>
+                </label>
+                <input class="submitLogin" type="submit" value="Entrar" id="entrar">
+            </form>
+        </div>
     </div>
-    <br><br>
-    <div class="formulariologin">
-        <form id="formlogin">
-            <label for="emailogin">
-                <input type="email" name="emailogin" id="emailogin" placeholder="E-mail para login" required>
-            </label>
-            <label for="passwordlogin">
-                <input type="password" name="passwordlogin" id="passwordlogin" placeholder="Digite sua senha" required>
-            </label>
-            <input type="submit" value="Entrar" id="entrar">
-        </form>
+
+    <!-- CONTEUDO DO SITE -->
+    <div class="content">
+
+        <!-- FORMULARIO DE CADASTRO -->
+        <div div="formulariocadastro">
+            <form id="form">
+                <label for="name">
+                    <input type="text" name="name" id="name" placeholder="Nome completo" required>
+                </label>
+                <label for="email">
+                    <input type="email" name="email" id="email" placeholder="E-mail" required>
+                </label>
+                <label for="password">
+                    <input type="password" name="password" id="password" placeholder="Senha" required>
+                </label>
+                <label for="dataNasc">
+                    <input type="date" name="dataNasc" id="dataNasc" placeholder="Data de nascimento" required>
+                </label>
+                <label for="cpf">
+                    <input type="number" name="cpf" id="cpf" placeholder="CPF: 12345678900" required>
+                </label>
+                <label for="uf">
+                    <select name="uf" id="uf" required>
+                        <option value="" selected disabled>UF</option>
+                    </select>
+                </label>
+                <label for="cidade">
+                    <select name="cidade" id="cidade" required>
+                        <option value="Cidade" selected disabled>Cidade</option>
+                    </select>
+                </label>
+                <label for="convenio">
+                    <select name="convenio" id="convenio" required>
+                        <option value="" selected disabled>Convenio</option>
+                    </select>
+                </label>
+                <label for="nomConvenio">
+                    <input type="text" name="nomConvenio" id="nomConvenio" placeholder="Nome do convenio">
+                </label>
+                
+        
+                <input type="submit" value="Enviar" id="enviar">
+            </form>
+            </div>
     </div>
+
+    
 
     <!-- <script src="./script.js"></script> -->
-    <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
     
 </body>
 </html>
