@@ -13,7 +13,7 @@ body{
     flex-direction: column;
 }
 
-.inputLogin{
+.inputForm{
     height: 25px;
 
     margin-right: 15px;
@@ -54,4 +54,101 @@ fieldset{
 
 .formulariologin{
     margin-right: 25px;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 92.8vh;
+}
+
+
+.formulariocadastro{
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#form{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    font-size: 18px;
+    border: 1px solid rgb(131, 131, 131);
+    padding: 30px;
+
+    height: 500px;  
+}
+.inputCadastro{
+    border: 1px solid rgb(131, 131, 131);
+
+    border-radius: 5px;
+    width: 350px;
+}
+
+.fieldsetForm{
+    color: rgb(70, 70, 70);
+}
+.localizacao{
+    width: 355px;
+    margin-right:10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.select{
+    height: 25px;
+    border: 1px solid rgb(131, 131, 131);
+    border-radius: 5px;
+}
+
+.cadastroUF{
+    width: 65px;
+}
+.cadastroCidade{
+    width: 268px;
+    margin-left: 20px;
+}
+
+.convenio{
+    width: 355px;
+    margin-right:10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+
+}
+
+.cadastroConvenio{
+    width: 120px;
+}
+
+.inputConvenio{
+    width: 206px;
+    margin-left: 20px;
+}
+
+#enviar{
+    margin-top: 15px;
+    margin-right: 10px;
+    width: 95%;
+    height: 45px;
+
+    border-radius: 5px;
+
+    background-color: rgb(98, 119, 241);
+    color: white;
 }

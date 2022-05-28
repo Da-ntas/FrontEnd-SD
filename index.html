@@ -19,13 +19,13 @@
                     <fieldset>
                         <legend>E-mail de usuário</legend>
                     </fieldset>
-                    <input class="inputLogin" type="email" name="emailogin" id="emailogin" required>
+                    <input class="inputForm" type="email" name="emailogin" id="emailogin" required>
                 </label>
                 <label for="passwordlogin">
                     <fieldset>
                         <legend>Senha de usuário</legend>
                     </fieldset>
-                    <input class="inputLogin" type="password" name="passwordlogin" id="passwordlogin" required>
+                    <input class="inputForm" type="password" name="passwordlogin" id="passwordlogin" required>
                 </label>
                 <input class="submitLogin" type="submit" value="Entrar" id="entrar">
             </form>
@@ -36,42 +36,73 @@
     <div class="content">
 
         <!-- FORMULARIO DE CADASTRO -->
-        <div div="formulariocadastro">
+        <div class="formulariocadastro">
+            <h1>Cadastre-se!</h1>
             <form id="form">
-                <label for="name">
-                    <input type="text" name="name" id="name" placeholder="Nome completo" required>
+                <label class="labelCadastro" for="name">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Nome completo</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="text" name="name" id="name" required>
                 </label>
-                <label for="email">
-                    <input type="email" name="email" id="email" placeholder="E-mail" required>
+                <label class="labelCadastro" for="email">
+                    <fieldset class="fieldsetForm">
+                        <Legend>E-mail</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="email" name="email" id="email" placeholder="exemplo@contoso.com" required>
                 </label>
-                <label for="password">
-                    <input type="password" name="password" id="password" placeholder="Senha" required>
+                <label class="labelCadastro" for="password">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Senha para login</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="password" name="password" id="password" required>
                 </label>
-                <label for="dataNasc">
-                    <input type="date" name="dataNasc" id="dataNasc" placeholder="Data de nascimento" required>
+                <label class="labelCadastro" for="dataNasc">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Data de nascimento</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="date" name="dataNasc" id="dataNasc"  required>
                 </label>
-                <label for="cpf">
-                    <input type="number" name="cpf" id="cpf" placeholder="CPF: 12345678900" required>
+                <label class="labelCadastro" for="cpf">
+                    <fieldset class="fieldsetForm">
+                        <Legend>CPF</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="number" name="cpf" id="cpf" placeholder="12345678900" required>
                 </label>
-                <label for="uf">
-                    <select name="uf" id="uf" required>
+                <span class="localizacao">
+                <label class="labelCadastro" for="uf">
+                    <fieldset class="fieldsetForm">
+                        <Legend>UF</Legend>
+                    </fieldset>
+                    <select name="uf" class="select cadastroUF" id="uf" required>
                         <option value="" selected disabled>UF</option>
                     </select>
                 </label>
-                <label for="cidade">
-                    <select name="cidade" id="cidade" required>
+                <label class="labelCadastro" for="cidade">
+                    <fieldset class="fieldsetForm cadastroCidade">
+                        <Legend>Cidade</Legend>
+                    </fieldset>
+                    <select name="cidade" class="select cadastroCidade" id="cidade" required>
                         <option value="Cidade" selected disabled>Cidade</option>
                     </select>
                 </label>
-                <label for="convenio">
-                    <select name="convenio" id="convenio" required>
+                </span>
+                <span class="convenio">
+                <label class="labelCadastro" for="convenio">
+                    <fieldset class="fieldsetForm cadastroConvenio">
+                        <Legend>Tem convenio?</Legend>
+                    </fieldset>
+                    <select name="convenio" class="select cadastroConvenio" id="convenio" required>
                         <option value="" selected disabled>Convenio</option>
                     </select>
                 </label>
-                <label for="nomConvenio">
-                    <input type="text" name="nomConvenio" id="nomConvenio" placeholder="Nome do convenio">
+                <label class="labelCadastro" for="nomConvenio">
+                    <fieldset class="fieldsetForm inputConvenio">
+                        <Legend>Nome convenio</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro inputConvenio" type="text" name="nomConvenio" id="nomConvenio" >
                 </label>
-                
+            </span>
         
                 <input type="submit" value="Enviar" id="enviar">
             </form>
