@@ -1,20 +1,91 @@
 let codeCidade = window.sessionStorage.getItem("userCidade")
 let allunidades = fetch(`http://localhost:8080/unidades/cidades/${codeCidade}`).then((response) => {return (response)})
-let unidades;
+let unidades, endereco, tipoExame, medico;
+
 async function agendamentoConsultas(){
     unidades = await (await allunidades).json();
     let unidadeAgendado = document.getElementById("unidadeAgendado");
+  
 
     unidades.forEach(element => {
-        let optionUnidade = document.createElement("option")
-        
-        let nomUnidade = element.nomUnidade;
-        let codUnidade = element.codeUnidades;
-        optionUnidade.value = codUnidade;
-        optionUnidade.text = nomUnidade;
 
-        unidadeAgendado.add(optionUnidade)
+        let teste = unidadeAgendado.options;
+        let jaTem = false;
+
+            for(const c of teste) {
+                if(c.label == element.nomUnidade){
+                    jaTem = true;
+                }
+            }
+
+        if(!jaTem){
+            let optionUnidade = document.createElement("option")
+            
+            let nomUnidade = element.nomUnidade;
+            let codUnidade = element.codeUnidades;
+            optionUnidade.value = codUnidade;
+            optionUnidade.text = nomUnidade;
+
+            unidadeAgendado.add(optionUnidade)
+        }
     });
+}
+
+
+async function mountTipoExamesOptions(codUnidade){
+    let allTipoExames = await fetch(`http://localhost:8080/tipoexames/unidade/${codUnidade}`).then((response) => {return (response)})
+    tipoExame = await allTipoExames.json();
+    let tiposExamesOp = document.getElementById("tipoExame");
+
+    //adicionando a opção default
+    tiposExamesOp.innerHTML = "";
+    tiposExamesOp.removeAttribute("disabled", "disabled")
+    let optionsDefault = document.createElement("option")
+    optionsDefault.value = "";
+    optionsDefault.text = "Tipos exames";
+    optionsDefault.setAttribute("selected", "selected")
+    optionsDefault.setAttribute("disabled", "disabled")
+    tiposExamesOp.add(optionsDefault);
+
+    
+
+    tipoExame.forEach(element => {
+        let optionTipoExame = document.createElement("option")
+
+        let exameTipo = element.exameTipo;
+        let codeExame = element.codeExame;
+        optionTipoExame.value = codeExame;
+        optionTipoExame.text = exameTipo;
+
+        tiposExamesOp.add(optionTipoExame);
+
+    })
+}
+
+async function mountNomMedicos(codTipoExame){
+    let allMedicos = await fetch(`http://localhost:8080/medicos/tipoExame/${codTipoExame}`).then((response) => { return (response)})
+    medico = await allMedicos.json();
+
+    let nomMedicoOp = document.getElementById("nomMedicoAgendado");
+    
+    //adicionando a opção default
+    nomMedicoOp.innerHTML = "";
+    nomMedicoOp.removeAttribute("disabled", "disabled")
+    let optionsDefault = document.createElement("option")
+    optionsDefault.value = "";
+    optionsDefault.text = "Nome médico";
+    optionsDefault.setAttribute("selected", "selected")
+    optionsDefault.setAttribute("disabled", "disabled")
+    nomMedicoOp.add(optionsDefault);
+
+
+    medico.map((e) => {
+        let optionMed = document.createElement("option")
+        optionMed.value = e.codeMedicos;
+        optionMed.text = e.nomMedico;
+
+        nomMedicoOp.add(optionMed)
+    })
 }
 
 
@@ -22,46 +93,61 @@ document.getElementById("unidadeAgendado").addEventListener("change", async (eve
     event.preventDefault();
 
     let enderecoAgendado = document.getElementById("enderecoAgendado");
-    let unidade = document.getElementById("unidadeAgendado").value;
+    let unidade = document.getElementById("unidadeAgendado");
+    let unidadeText = unidade.options[unidade.selectedIndex].text;
+    let unidadeValue = document.getElementById("unidadeAgendado").value;
+    
+    
+    //adicionando a opção default
+    enderecoAgendado.innerHTML = "";
+    enderecoAgendado.removeAttribute("disabled", "disabled")
+    let optionsDefault = document.createElement("option")
+    optionsDefault.value = "";
+    optionsDefault.text = "Endereços";
+    optionsDefault.setAttribute("selected", "selected")
+    optionsDefault.setAttribute("disabled", "disabled")
+    enderecoAgendado.add(optionsDefault);
+
 
     unidades.forEach(element => {
-        if(element.codeUnidades == unidade){
+        
+        if(element.nomUnidade === unidadeText){
+            
             let optionEndereco = document.createElement("option")
 
-            let nomEmdereco = element.enderecoUnidade;
-            let codUnidade = element.codUnidades;
-            optionEndereco.value = codUnidade;
-            optionEndereco.text = nomEmdereco;
-            optionEndereco.setAttribute("selected", "selected")
-            optionEndereco.setAttribute("disabled", "disabled")
+                let nomEmdereco = element.enderecoUnidade;
+                let codUnidade = element.codeUnidades;
+                optionEndereco.value = codUnidade;
+                optionEndereco.text = nomEmdereco;
 
-            enderecoAgendado.add(optionEndereco);
+                enderecoAgendado.add(optionEndereco);
+            
         }
     })
     
-
 
 })
 
-function carregarConvenio(){
-    let convenio = document.getElementById("convenio");
+document.getElementById("enderecoAgendado").addEventListener("change", async (event) => {
+    event.preventDefault();
 
-    let data = [
-        {
-            nomOption: "Sim",
-            nomValue: true
-        },
-        {
-            nomOption: "Não",
-            nomValue: false
-        }
-    ]
-    
-    data.map((element) => {
-        let options = document.createElement("option")
-        options.value = element.nomValue
-        options.text = element.nomOption
+    let unidadeValue = document.getElementById("enderecoAgendado").value
 
-        convenio.add(options);
-    })
-}
+    mountTipoExamesOptions(unidadeValue);
+
+})
+
+
+document.getElementById("tipoExame").addEventListener("change", async (event) => {
+    event.preventDefault();
+
+    let tipoExameValue = document.getElementById("tipoExame").value;
+
+    mountNomMedicos(tipoExameValue);
+})
+
+document.getElementById("formAgendamento").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    console.log(document.getElementById("formAgendamento").value);
+})

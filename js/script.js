@@ -68,20 +68,8 @@ document.getElementById("uf").addEventListener("change", async (event) => {
     document.getElementById("cidade").innerHTML = "";
     document.getElementById("cidade").removeAttribute("disabled", "disabled")
     let uf = document.getElementById("uf").value;
-    let reqCidades;
-    switch (uf){
-        case '1':
-            reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/1").then((response) => {return (response)})
-            break;
-        case '2':
-            reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/2").then((response) => {return (response)})
-            break;
-        case '3':
-            reqCidades = fetch("http://localHost:8080/cidades/cidadeporuf/3").then((response) => {return (response)})
-            break;
-        default:
-            break;
-    }
+    let reqCidades = fetch(`http://localHost:8080/cidades/cidadeporuf/${uf}`).then((response) => {return (response)})
+           
 
     let cidades = await (await reqCidades).json()
     await carregarCidades(cidades);

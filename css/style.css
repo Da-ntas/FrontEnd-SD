@@ -43,11 +43,12 @@ fieldset{
 
 .header{
     width: 100vw;
-    height: 60px;
+    height: 80px;
 
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    justify-content: space-evenly;
 
     background-color: rgb(66, 93, 243);
 }
@@ -150,5 +151,9 @@ fieldset{
     border-radius: 5px;
 
     background-color: rgb(98, 119, 241);
+    color: white;
+}
+
+.nameClinic{
     color: white;
 }
