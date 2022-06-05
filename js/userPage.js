@@ -1,9 +1,9 @@
 function userPage(){
     if(window.sessionStorage.userName){
         let userName = window.sessionStorage.getItem("userName");
-        console.log(userName)
+        
         let obj = document.getElementById("userName");
-        console.log(obj)
+        
         obj.innerText = `Bem vindo de volta ${userName}`
     }
     else{

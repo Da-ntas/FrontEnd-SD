@@ -95,7 +95,6 @@ document.getElementById("unidadeAgendado").addEventListener("change", async (eve
     let enderecoAgendado = document.getElementById("enderecoAgendado");
     let unidade = document.getElementById("unidadeAgendado");
     let unidadeText = unidade.options[unidade.selectedIndex].text;
-    let unidadeValue = document.getElementById("unidadeAgendado").value;
     
     
     //adicionando a opção default
@@ -149,5 +148,38 @@ document.getElementById("tipoExame").addEventListener("change", async (event) =>
 document.getElementById("formAgendamento").addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    console.log(document.getElementById("formAgendamento").value);
+    let userCode = window.sessionStorage.getItem("userCode");
+
+    let data = {
+        "dtaAgendada": document.getElementById("dataAgendamento").value,
+        "horarioAgendado": document.getElementById("horarioAgendado").value,
+        "codMedico": document.getElementById("nomMedicoAgendado").value,
+        "statusConsulta": "Agendada",
+        "idTipoExame": document.getElementById("tipoExame").value,
+        "idUnidadeAgendado": document.getElementById("unidadeAgendado").value,
+        "codeUser": userCode
+    }
+
+    let makePost = fetch(`http://localhost:8080/consultas/${userCode}`, {
+    method: 'POST',
+    headers: {
+        "Content-type": "application/json"
+    },
+    body: JSON.stringify(data)
+    })
+    .then((response) => {
+        return response
+    })
+
+    
+    let response = await (await makePost).json();
+
+    console.log(response)
+
+})
+
+document.getElementById("goback").addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.location.assign('./userlogado.html')
 })

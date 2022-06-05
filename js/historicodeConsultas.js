@@ -2,20 +2,42 @@ let codeUser = window.sessionStorage.getItem("userCode");
 
 let allconsultas = fetch(`http://localhost:8080/consultas/userConsultas/${codeUser}`).then((response) => {return (response)})
 let consultas;
+let arrConsultas = [];
 // let tipoExame = 
 // let unidadeAgendada = 
+
+
+async function getInfos(codeUnidade, codeTipoExame, codeMedico){
+    let unidadeinfo = fetch(`http://localhost:8080/unidades/${codeUnidade}`).then((response) => {return (response)})
+    let tipoexameinfo = fetch(`http://localhost:8080/tipoexames/${codeTipoExame}`).then((response) => { return (response)})
+    // let medicoinfo = fetch(`http://localhost:8080/medicos/${codeMedico}`).then((response) => { return (response)})
+    let medicoinfo = fetch(`http://localhost:8080/medicos/1`).then((response) => { return (response)})
+    
+    let unidade = await (await unidadeinfo).json();
+    let tipoexame = await (await tipoexameinfo).json();
+    let medico = await (await medicoinfo).json();
+
+        return {
+            nomUnidade: unidade.nomUnidade,
+            enderecoUnidade: unidade.enderecoUnidade,
+            nomTipoExame: tipoexame.exameTipo,
+            nomMedico: medico.nomMedico
+        }
+}
+
 async function carregarConsultas() {
     consultas = await (await allconsultas).json()
-
-    let consulta = consultas[0];
-
-    console.log(consulta)
     
     let body = document.body;
 
-    consultas.forEach(infoConsulta => {
+    await Promise.all(consultas.map(async (infoConsulta) => {
 
-            
+        let infos = await (getInfos(infoConsulta.idUnidadeAgendado, infoConsulta.idTipoExame, infoConsulta.codMedidoAgendado))
+        arrConsultas.push({
+            consulta: infoConsulta,
+            informations: infos
+        })
+        
         let divCard = document.createElement("div");
         let divSuperior = document.createElement("div");
         let divInferior = document.createElement("div");
@@ -35,10 +57,10 @@ async function carregarConsultas() {
         let textStatus = document.createTextNode(`Status: ${infoConsulta.statusConsulta}`);
         let textData = document.createTextNode(`Data Agendada: ${infoConsulta.dtaAgendada}`);
         let textHorario = document.createTextNode(`Horario agendado: ${infoConsulta.horarioAgendado}`);
-        let textUnidade = document.createTextNode(`Unidade agendada: ${infoConsulta.idUnidadeAgendado}`);
-        let textEndereco = document.createTextNode(`Endereço agendado: ${infoConsulta.enderecoAgendado}`);
-        let textTipoExame = document.createTextNode(`Tipo de exame: ${infoConsulta.idTipoExame}`);
-        let textNomMedico = document.createTextNode(`Nome do médico: ${infoConsulta.nomMedicoAgendado}`);
+        let textUnidade = document.createTextNode(`Unidade agendada: ${infos.nomUnidade}`);
+        let textEndereco = document.createTextNode(`Endereço agendado: ${infos.enderecoUnidade}`);
+        let textTipoExame = document.createTextNode(`Tipo de exame: ${infos.nomTipoExame}`);
+        let textNomMedico = document.createTextNode(`Nome do médico: ${infos.nomMedico}`);
 
         divCard.className = "card"
         divSuperior.className = "superior"
@@ -49,7 +71,7 @@ async function carregarConsultas() {
         spanInferior2.className = "inputResultado"
         inputResult.className = "botaoPesquisar"
 
-        inputResult.setAttribute("href", `http://localhost:8080/resultadoconsulta/consulta/${infoConsulta.codeConsultas}`)
+        inputResult.setAttribute("onclick", `loadResultConsulta(${infoConsulta.codeConsultas})`)
         inputResult.setAttribute("type", "button")
         inputResult.setAttribute("value", "Resultado")
     
@@ -79,12 +101,34 @@ async function carregarConsultas() {
 
         body.appendChild(divCard)
 
-    })
+    }))
     
+}
+
+async function loadResultConsulta(id){
+    let resultadoConsultaInfo = await fetch(`http://localhost:8080/resultadoconsulta/consulta/${id}`)
+    let resultadoConsulta = await (await resultadoConsultaInfo).json();
+    
+    if(resultadoConsultaInfo.status != 404){
+
+        let options = arrConsultas.find(ops => ops.consulta.codeConsultas == id)
+
+        let objinfos = {
+            opt: options,
+            reslt: resultadoConsulta
+        }
+        let txtopts = JSON.stringify(objinfos)
+
+        window.sessionStorage.setItem('infosconsulta', txtopts)
+        window.location.assign('./resultadoConsulta.html');
+    }
+    else{
+        window.alert("O resultado dessa consulta ainda não está dispoínivel");
+    }
 }
 
 document.getElementById("goback").addEventListener('click', (event) => {
     event.preventDefault();
 
-    history.go(-1);
+    window.location.assign('./userlogado.html')
 })

@@ -17,29 +17,6 @@ async function carregarUF(){
     });
 }
 
-function carregarConvenio(){
-    let convenio = document.getElementById("convenio");
-
-    let data = [
-        {
-            nomOption: "Sim",
-            nomValue: true
-        },
-        {
-            nomOption: "Não",
-            nomValue: false
-        }
-    ]
-    
-    data.map((element) => {
-        let options = document.createElement("option")
-        options.value = element.nomValue
-        options.text = element.nomOption
-
-        convenio.add(options);
-    })
-}
-
 function carregarCidades(cidades){
     let city = document.getElementById("cidade");
 
@@ -89,8 +66,7 @@ document.getElementById("form").addEventListener("submit", async (event) => {
         cpf: document.getElementById("cpf").value,
         uf: document.getElementById("uf").value,
         cidade: document.getElementById("cidade").value,
-        convenio: document.getElementById("convenio").value,
-        nomConvenio: document.getElementById("convenio").value
+        role: "user"
     }
 
     
@@ -140,7 +116,7 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
     else{
         let user = await (await teste).json();
         if(user.password == password){
-            console.log(user)
+            
             // window.alert("Conta encontrada! Levando para sua página");
             document.getElementById("formlogin").reset();
             window.sessionStorage.setItem("userName", user.nome);
@@ -149,7 +125,13 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
             window.sessionStorage.setItem("userCidade", user.cidade);
             window.sessionStorage.setItem("userConvenio", user.convenio);
             window.sessionStorage.setItem("userNomConvenio", user.nomConvenio);
-            window.location.assign('./logado.html');
+            
+            if(user.role === "user"){
+                window.location.assign('./userlogado.html');
+            }
+            if(user.role === "med" || user.role === "admin"){
+                window.location.assign('./userlogado.html');
+            }
         }
     }
 })
