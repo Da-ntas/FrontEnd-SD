@@ -11,7 +11,18 @@
     <div class="topo">
         <input type="button" value="Voltar" id="goback">
         <h1>Historico de consultas</h1>
+        <select name="filtrar" id="filtrar">
+            <option value="Todas" selected>Todas</option>
+            <option value="Agendada">Agendada</option>
+            <option value="Realizada">Realizada</option>
+            <option value="Remarcada">Remarcada</option>
+            <option value="Desmarcada">Desmarcada</option>
+        </select>
     </div>
+    <div id="cardsConsultas">
+
+    </div>
+    <div id="modalDesmarcar"></div>
 
     <script src="./js/historicodeConsultas.js"></script>
 </body>

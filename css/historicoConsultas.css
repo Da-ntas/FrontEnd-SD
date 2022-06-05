@@ -3,6 +3,8 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
 }
 .topo{
     display: flex; 
@@ -21,6 +23,7 @@ body{
     border:none;
     border-bottom: 1px solid black;
 }
+
 .card{
     width: 650px;
     height: 200px;
@@ -86,7 +89,12 @@ body{
     margin-right: 20px;
     margin-top: 40px;
 
+
     background-color: transparent;
     border:none;
     border-bottom: 1px solid black;
+}
+
+.inputResultado{
+    display: flex;
 }

@@ -66,6 +66,7 @@ document.getElementById("form").addEventListener("submit", async (event) => {
         cpf: document.getElementById("cpf").value,
         uf: document.getElementById("uf").value,
         cidade: document.getElementById("cidade").value,
+        codMed: null,
         role: "user"
     }
 
@@ -125,12 +126,17 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
             window.sessionStorage.setItem("userCidade", user.cidade);
             window.sessionStorage.setItem("userConvenio", user.convenio);
             window.sessionStorage.setItem("userNomConvenio", user.nomConvenio);
-            
+            console.log(user.role)
             if(user.role === "user"){
                 window.location.assign('./userlogado.html');
             }
-            if(user.role === "med" || user.role === "admin"){
-                window.location.assign('./userlogado.html');
+            if(user.role === "med"){
+                console.log(user)
+                window.sessionStorage.setItem("codMed", user.codMedico);
+                window.location.assign('./medicologado.html');
+            }
+            if(user.role === "admin"){
+                window.location.assign('./adminlogado.html')
             }
         }
     }
