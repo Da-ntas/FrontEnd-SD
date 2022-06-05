@@ -118,3 +118,8 @@ body{
 .inputResultado{
     display: flex;
 }
+
+.yesbutton:hover,
+.nobutton:hover{
+    border: 1px solid black;
+}

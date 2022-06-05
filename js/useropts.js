@@ -28,11 +28,19 @@ document.getElementById("goToProfile").addEventListener('click', (event) => {
     event.preventDefault();
     window.location.assign("./profile.html")
 })
+
 document.getElementById("changepass").addEventListener('click', (event) => {
     event.preventDefault();
     window.location.assign('./alterarSenha.html');
 })
 
+
+document.getElementById("logout").addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.sessionStorage.clear();
+    window.location.assign('./index.html')
+})
 
 document.getElementById("homepage").addEventListener('click', (event) => {
     event.preventDefault();

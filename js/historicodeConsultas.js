@@ -201,6 +201,9 @@ function montarModalDesmarcarConsulta(id){
     // divgeral.style.marginTop = '150px'
     divgeral.style.backgroundColor = 'white'
 
+    buttonSim.className = "yesbutton"
+    buttonNao.className = "nobutton"
+
     div1.style.width = 'inherit'
     div1.style.height = '50px'
     div1.style.display = 'flex'
@@ -232,7 +235,7 @@ function montarModalDesmarcarConsulta(id){
     buttonNao.setAttribute("value", "Não")
     buttonNao.setAttribute("onclick", `fecharModal()`)
 
-    buttonSim.style.backgroundColor = 'white'
+    buttonSim.style.backgroundColor = 'lightgrey'
     buttonSim.style.width = '150px'
     buttonSim.style.height = '35px'
     buttonNao.style.backgroundColor = 'red'

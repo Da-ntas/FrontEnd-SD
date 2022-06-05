@@ -160,7 +160,7 @@ document.getElementById("formAgendamento").addEventListener("submit", async (eve
         "codeUser": userCode
     }
 
-    let makePost = fetch(`http://localhost:8080/consultas/${userCode}`, {
+    fetch(`http://localhost:8080/consultas/${userCode}`, {
     method: 'POST',
     headers: {
         "Content-type": "application/json"
@@ -168,13 +168,9 @@ document.getElementById("formAgendamento").addEventListener("submit", async (eve
     body: JSON.stringify(data)
     })
     .then((response) => {
-        return response
+        window.alert("Consulta marcada com sucesso!");
+        document.getElementById("formAgendamento").reset();
     })
-
-    
-    let response = await (await makePost).json();
-
-    console.log(response)
 
 })
 
