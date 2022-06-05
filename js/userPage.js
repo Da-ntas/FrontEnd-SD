@@ -1,12 +1,5 @@
 function userPage(){
-    if(window.sessionStorage.userName){
-        let userName = window.sessionStorage.getItem("userName");
-        
-        let obj = document.getElementById("userName");
-        
-        obj.innerText = `Bem vindo de volta ${userName}`
-    }
-    else{
+    if(!window.sessionStorage.userName){
         window.location.assign('./notfound.html')
     }
 }
@@ -22,6 +15,11 @@ document.getElementById("agendarConsultas").addEventListener('click', (event) =>
     event.preventDefault();
 
     window.location.assign('./agendarConsultas.html')
+})
+
+document.getElementById("changepass").addEventListener('click', (event) => {
+    event.preventDefault();
+    
 })
 
 document.getElementById("logout").addEventListener('click', (event) => {

@@ -1,0 +1,101 @@
+.formulariologin{
+    width: 100%;
+    height: 600px;
+
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+#goback{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+.cardLogin{
+    width: 450px;
+    height: 270px;
+
+    flex-direction: column;
+    justify-content: center;
+    
+    border-radius: 10px;
+    border: 0.5px solid black;
+}
+
+#formlogin, form{
+    display: flex;
+    flex-direction: column;
+}
+
+#linkCriarConta{
+    text-decoration: none;
+}
+
+.inputForm{
+    height: 28px;
+    width: 300px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding-left: 8px;
+}
+
+fieldset{
+    margin-top: 15px;
+}
+
+.submitLogin{
+    margin-top: 15px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: rgba(24, 150, 172, 0.8);
+}
+
+.submitLogin:hover{
+    background-color: rgba(24, 150, 172, 1);
+}
+
+.criarConta{
+    margin-top: 15px;
+}
+
+#cadastro{
+    display: none;
+    width: 450px;
+    height: 600px;
+
+}
+
+
+.cardCadastro{
+    width: 100%;
+    height: 500px;
+
+    margin-top: 50px;
+    border: 1px solid black;
+    
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.localizacao{
+    justify-content: space-evenly;
+}
+
+.select{
+    width: 150px;
+    height: 30px;
+}
+
+.iconify{
+    color: white;
+}
+
+#goHomePage{
+    background-color: transparent;
+}

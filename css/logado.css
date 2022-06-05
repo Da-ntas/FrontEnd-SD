@@ -1,0 +1,78 @@
+
+#agendarConsultas:hover,
+#historicoConsultas:hover{
+    box-shadow: 10px 10px rgba(24, 150, 172, 0.2);
+}
+
+#arrow-down:hover{
+    color: rgb(24, 150, 172);
+    background-color: white;
+
+    border-radius: 20px;
+}
+
+.conta{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+
+    flex-direction: column;
+
+}
+
+.gohome{
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+.iconify{
+    color: white
+}
+
+#showactions, #homepage, #goToProfile{
+    background-color: transparent;
+}
+
+#actionsup{
+    position: absolute;
+    display: none;
+}
+
+.actions{
+    top: 60px;
+    right: 2px;
+
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid black;
+
+    width: 110px;
+    height: 60px;
+    overflow: hidden;
+
+    z-index: 2;
+    
+}
+
+.opt{
+    display: block;
+    /* margin: 2px 0px 0px 5px; */
+    padding: 5px 0px 0px 10px;
+    height: 45%;
+}
+
+.changepass{
+    border-bottom: 1px solid black;
+}
+
+.changepass:hover{
+    background-color: lightgray;
+    border-radius: 8px 8px 0px 0px;
+    cursor: pointer;
+}
+
+.makelogout:hover{  
+    background-color: lightgray;
+    cursor: pointer;
+}

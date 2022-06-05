@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/login.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <!-- NOME DA CLINICA -->
+        <span class="nameClinic">
+            <h1><strong>HealthClinic</strong></h1>
+        </span>
+    </div>
+
+    <div id="goback">
+        <div class="icons flex">
+            <button id="goHomePage">
+                <span class="iconify" data-icon="akar-icons:arrow-back-thick-fill" data-width="50" data-height="50"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE LOGIN -->
+    <div class="formulariologin flex" id="login">
+        <div class="cardLogin flex">
+            <span class="text">
+                <h4>Acesse sua conta</h4>
+            </span>
+            <form id="formlogin">
+                <label for="emailogin">
+                    <fieldset>
+                        <legend>E-mail de usuário</legend>
+                    </fieldset>
+                    <input class="inputForm" type="email" name="emailogin" id="emailogin" required>
+                </label>
+                <label for="passwordlogin">
+                    <fieldset>
+                        <legend>Senha de usuário</legend>
+                    </fieldset>
+                    <input class="inputForm" type="password" name="passwordlogin" id="passwordlogin" required>
+                </label>
+                <input class="submitLogin" type="submit" value="Entrar" id="entrar">
+            </form>
+            <span class="criarConta">
+               <a href="#" id="linkCriarConta">Ainda não tem uma conta? Crie agora mesmo!</a> 
+            </span>
+        </div>
+    </div>
+
+    <!-- FORMULARIO DE CADASTRO -->
+    <div class="formulariocadastro flex" id="cadastro">
+        <div class="cardCadastro flex">
+            <span class="text">
+                <h4>Crie sua conta</h4>
+            </span>
+            <form id="form">
+                <label class="labelCadastro" for="name">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Nome completo</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="text" name="name" id="name" required>
+                </label>
+                <label class="labelCadastro" for="email">
+                    <fieldset class="fieldsetForm">
+                        <Legend>E-mail</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="email" name="email" id="email" placeholder="exemplo@contoso.com" required>
+                </label>
+                <label class="labelCadastro" for="password">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Senha para login</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="password" name="password" id="password" required>
+                </label>
+                <label class="labelCadastro" for="dataNasc">
+                    <fieldset class="fieldsetForm">
+                        <Legend>Data de nascimento</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="date" name="dataNasc" id="dataNasc"  required>
+                </label>
+                <label class="labelCadastro" for="cpf">
+                    <fieldset class="fieldsetForm">
+                        <Legend>CPF</Legend>
+                    </fieldset>
+                    <input class="inputForm inputCadastro" type="number" name="cpf" id="cpf" placeholder="12345678900" required>
+                </label>
+                <span class="localizacao flex">
+                    <label class="labelCadastro" for="uf">
+                        <fieldset class="fieldsetForm">
+                            <Legend>UF</Legend>
+                        </fieldset>
+                        <select name="uf" class="select cadastroUF" id="uf" required>
+                            <option value="" selected disabled>UF</option>
+                        </select>
+                    </label>
+                    <label class="labelCadastro" for="cidade">
+                        <fieldset class="fieldsetForm cadastroCidade">
+                            <Legend>Cidade</Legend>
+                        </fieldset>
+                        <select name="cidade" class="select cadastroCidade" id="cidade" required>
+                            <option value="Cidade" selected disabled>Cidade</option>
+                        </select>
+                    </label>
+                </span>
+            </span>
+        
+                <input class="submitLogin" type="submit" value="Enviar" id="enviar">
+            </form>
+        </div>
+    </div>
+
+        <script src="./js/login.js"></script>
+        <script src="./js/script.js"></script>
+        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+</body>
+</html>

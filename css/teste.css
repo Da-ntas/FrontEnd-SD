@@ -1,0 +1,63 @@
+#formlogin{
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-around;
+    width: 115%;
+}
+
+legend{
+    color: white;
+}
+
+.inputForm{
+    height: 30px;
+    font-size: 16px;
+    border-radius: 8px;
+
+    padding-left: 8px;
+}
+
+
+.submitLogin{
+    width: 80px;
+    height: 30px;
+}
+
+#container{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    margin-top: 50px;
+}
+
+
+.square{
+    flex-direction: column;
+    background-color: white;
+
+    width: 450px;
+    height: 270px;
+
+    border-radius: 10px;
+    border: 0.5px solid black;
+}
+
+.content{
+    flex-direction: column;    
+    margin-top: 30px;
+}
+
+.content > h2{
+    font-weight: 500;
+}
+
+#square1:hover,
+#square2:hover,
+#square3:hover{
+    box-shadow: 10px 10px rgba(24, 150, 172, 0.2);
+}

@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/teste.css">
+    <link rel="stylesheet" href="css/global.css">
     <title>Document</title>
 </head>
-<body onload="carregarUF()">
-
+<body>
     <!-- HEADER DO SITE -->
     <div class="header">
         <!-- NOME DA CLINICA -->
         <span class="nameClinic">
             <h1><strong>HealthClinic</strong></h1>
         </span>
-        <!-- FORMULARIO DE LOGIN -->
+        <!-- FORMULARIO DE LOGIN
         <div class="formulariologin">
             <form id="formlogin">
                 <label for="emailogin">
@@ -32,74 +32,29 @@
                 </label>
                 <input class="submitLogin" type="submit" value="Entrar" id="entrar">
             </form>
+        </div> -->
+    </div>
+    <div id="container">
+        <div id="square1" class="flex square">
+            <div class="content flex">
+                <h2>Agende sua Consulta</h2>
+                <p>Agende sua consulta no melhor horário para você!</p>
+            </div>
+        </div>
+        <div id="square2" class="flex square">
+            <div class="content flex">
+                <h2>Conta</h2>
+                <p>Acesse sua conta para gerenciar ou marcar consultas</p>
+            </div>
+        </div>
+        <div id="square3" class="flex square">
+            <div class="content flex">
+                <h2>Histórico de Consultas</h2>
+                <p>Veja seu histórico de consultas, e acompanhe seus resultados!</p>
+            </div>
         </div>
     </div>
 
-    <!-- CONTEUDO DO SITE -->
-    <div class="content">
-
-        <!-- FORMULARIO DE CADASTRO -->
-        <div class="formulariocadastro">
-            <h1>Cadastre-se!</h1>
-            <form id="form">
-                <label class="labelCadastro" for="name">
-                    <fieldset class="fieldsetForm">
-                        <Legend>Nome completo</Legend>
-                    </fieldset>
-                    <input class="inputForm inputCadastro" type="text" name="name" id="name" required>
-                </label>
-                <label class="labelCadastro" for="email">
-                    <fieldset class="fieldsetForm">
-                        <Legend>E-mail</Legend>
-                    </fieldset>
-                    <input class="inputForm inputCadastro" type="email" name="email" id="email" placeholder="exemplo@contoso.com" required>
-                </label>
-                <label class="labelCadastro" for="password">
-                    <fieldset class="fieldsetForm">
-                        <Legend>Senha para login</Legend>
-                    </fieldset>
-                    <input class="inputForm inputCadastro" type="password" name="password" id="password" required>
-                </label>
-                <label class="labelCadastro" for="dataNasc">
-                    <fieldset class="fieldsetForm">
-                        <Legend>Data de nascimento</Legend>
-                    </fieldset>
-                    <input class="inputForm inputCadastro" type="date" name="dataNasc" id="dataNasc"  required>
-                </label>
-                <label class="labelCadastro" for="cpf">
-                    <fieldset class="fieldsetForm">
-                        <Legend>CPF</Legend>
-                    </fieldset>
-                    <input class="inputForm inputCadastro" type="number" name="cpf" id="cpf" placeholder="12345678900" required>
-                </label>
-                <span class="localizacao">
-                <label class="labelCadastro" for="uf">
-                    <fieldset class="fieldsetForm">
-                        <Legend>UF</Legend>
-                    </fieldset>
-                    <select name="uf" class="select cadastroUF" id="uf" required>
-                        <option value="" selected disabled>UF</option>
-                    </select>
-                </label>
-                <label class="labelCadastro" for="cidade">
-                    <fieldset class="fieldsetForm cadastroCidade">
-                        <Legend>Cidade</Legend>
-                    </fieldset>
-                    <select name="cidade" class="select cadastroCidade" id="cidade" required>
-                        <option value="Cidade" selected disabled>Cidade</option>
-                    </select>
-                </label>
-                </span>
-            </span>
-        
-                <input type="submit" value="Enviar" id="enviar">
-            </form>
-            </div>
-    </div>
-
-    
-
-    <script src="./js/script.js"></script>
-    
+    <script src="./js/index.js"></script>
 </body>
 </html>

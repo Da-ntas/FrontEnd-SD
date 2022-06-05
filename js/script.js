@@ -89,6 +89,7 @@ document.getElementById("form").addEventListener("submit", async (event) => {
     }
     else{
         window.alert("Conta criada com sucesso!");
+        window.location.assign('./login.html');
         document.getElementById("form").reset();
     }
 
@@ -124,8 +125,8 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
             window.sessionStorage.setItem("userCode", user.code);
             window.sessionStorage.setItem("userUf", user.uf);
             window.sessionStorage.setItem("userCidade", user.cidade);
-            window.sessionStorage.setItem("userConvenio", user.convenio);
-            window.sessionStorage.setItem("userNomConvenio", user.nomConvenio);
+            window.sessionStorage.setItem("dataNasc", user.dataNasc);
+            window.sessionStorage.setItem("email", user.email);
             console.log(user.role)
             if(user.role === "user"){
                 window.location.assign('./userlogado.html');
@@ -139,8 +140,18 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
                 window.location.assign('./adminlogado.html')
             }
         }
+        else{
+            window.alert("Credenciais inválidas, tente novamente, por gentileza")
+        }
     }
 })
+
+document.getElementById("goback").addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.location.assign('./index.html');
+})
+
 //GET
 // let teste = fetch("http://localhost:8080/user", {mode: "cors"})
 // .then((response) => {

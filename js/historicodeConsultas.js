@@ -220,6 +220,10 @@ function montarModalDesmarcarConsulta(id){
     h4.textContent = 'Deseja desmarcar essa consulta?'
     
     buttonClose.style.marginLeft = '70px'
+    buttonClose.style.width = '20px'
+    buttonClose.style.height = '20px'
+    // buttonClose.style.borderRadius = '10px'
+    buttonClose.style.textAlign = 'center'
     buttonClose.setAttribute("onclick", `fecharModal()`)
 
     buttonSim.setAttribute("value", "Sim")
@@ -245,9 +249,10 @@ function montarModalDesmarcarConsulta(id){
     divgeral.appendChild(div1);
     divgeral.appendChild(div2);
 
-    modalbg.style.width = '100vw'
-    modalbg.style.height = '100vw'
-    modalbg.style.position = 'absolute'
+    modalbg.style.width = 'inherit'
+    modalbg.style.height = '100vh'
+    modalbg.style.position = 'fixed'
+    modalbg.style.top = '0px'
     modalbg.style.backgroundColor = 'rgba(94,94,94,0.4)'
     modalbg.style.display = 'flex'
     modalbg.style.alignItems = 'center'
@@ -266,7 +271,7 @@ document.getElementById("filtrar").addEventListener('change', (event) => {
     event.preventDefault();
 
     let option = document.getElementById("filtrar").value
-    if(option == "Todos"){
+    if(option == "Todas"){
         montarConsultas(consultas);
     }
     else{
@@ -279,4 +284,16 @@ document.getElementById("goback").addEventListener('click', (event) => {
     event.preventDefault();
 
     window.location.assign('./userlogado.html')
+})
+
+document.getElementById("cardsConsultas").addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    omitirAction();
+})
+
+document.getElementById("topoOps").addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    omitirAction();
 })
