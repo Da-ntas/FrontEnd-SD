@@ -30,6 +30,12 @@ async function montarConsultas(consultas){
     let cardconsultas = document.getElementById("cardsConsultas");
     cardconsultas.innerHTML = "";
 
+    if(consultas.length == 0){
+        let text = document.createTextNode("Nenhuma consulta encontrada :(")
+
+        cardconsultas.appendChild(text)
+    }
+
     await Promise.all(consultas.map(async (infoConsulta) => {
 
         let infos = await (getInfos(infoConsulta.idUnidadeAgendado, infoConsulta.idTipoExame, infoConsulta.codMedidoAgendado))
@@ -129,17 +135,6 @@ async function carregarConsultas() {
     
     montarConsultas(consultas);
     
-}
-
-async function carregarConsultaPorFiltro(status){
-    let id = window.sessionStorage.getItem("userCode");
-    let filteredConsultas = fetch(`http://localhost:8080/consultas/status/${status}/${id}`).then((response) => {return (response)})
-    let filteredConsultasJSON = await (await filteredConsultas).json();
-    
-    if(filteredConsultasJSON.status != 404){
-        
-        montarConsultas(filteredConsultasJSON);
-    } 
 }
 
 async function loadResultConsulta(id){
@@ -275,7 +270,8 @@ document.getElementById("filtrar").addEventListener('change', (event) => {
         montarConsultas(consultas);
     }
     else{
-        carregarConsultaPorFiltro(option);
+        let filteredConsultas = consultas.filter((e) => e.statusConsulta == option)
+        montarConsultas(filteredConsultas);
     }
 })
 
