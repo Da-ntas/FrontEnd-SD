@@ -1,3 +1,8 @@
+function carregarForm(){
+    
+    document.getElementById("login").style.display = "block"
+}
+
 document.getElementById("change").addEventListener('click', async (event) => {
     event.preventDefault();
     let codUser = Number(window.sessionStorage.getItem("userCode"))
@@ -21,10 +26,6 @@ document.getElementById("change").addEventListener('click', async (event) => {
             let user = await (await userGet).json();
             console.log(user);
             if(user.password == oldPass){
-                let data = {
-                    codUser: codUser, 
-                    newPass: newPass
-                }
                 fetch(`http://localhost:8080/user/${codUser}?newPass=${newPass}`, {
                     method: "PUT"
                 })

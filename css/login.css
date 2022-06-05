@@ -1,10 +1,9 @@
-.formulariologin{
+.formulariologin, .formulariocadastro{
     width: 100%;
     height: 600px;
 
     justify-content: center;
     flex-direction: column;
-
 }
 
 #goback{
@@ -24,7 +23,7 @@
     border: 0.5px solid black;
 }
 
-#formlogin, form{
+form{
     display: flex;
     flex-direction: column;
 }
@@ -67,7 +66,12 @@ fieldset{
     display: none;
     width: 450px;
     height: 600px;
+}
 
+#login{
+    display: none;
+    width: 450px;
+    height: 600px;
 }
 
 
@@ -81,6 +85,10 @@ fieldset{
     justify-content: center;
     flex-direction: column;
 
+}
+
+.cardLogin{
+    margin-top: 150px;
 }
 
 .localizacao{

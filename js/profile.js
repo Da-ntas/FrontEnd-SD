@@ -1,8 +1,8 @@
 let nomUser = window.sessionStorage.getItem("userName");
 let emailUser = window.sessionStorage.getItem("email");
 let dataNascUser = window.sessionStorage.getItem("dataNasc");
-let codeUf = window.sessionStorage.getItem("userCode");
-let codeCidade = window.sessionStorage.getItem("userCode");
+let codeUf = window.sessionStorage.getItem("userUf");
+let codeCidade = window.sessionStorage.getItem("userCidade");
 
 let fullName = document.getElementById("userName");
 let email  = document.getElementById("userEmail");

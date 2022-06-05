@@ -3,6 +3,7 @@ let codeUser = window.sessionStorage.getItem("userCode");
 let allconsultas = fetch(`http://localhost:8080/consultas/userConsultas/${codeUser}`).then((response) => {return (response)})
 let consultas;
 let arrConsultas = [];
+let arrObj = [];
 // let tipoExame = 
 // let unidadeAgendada = 
 
@@ -43,7 +44,13 @@ async function montarConsultas(consultas){
             consulta: infoConsulta,
             informations: infos
         })
-        
+
+        arrObj.push({
+            consulta: infoConsulta.codeConsultas,
+            data: infoConsulta.dtaAgendada,
+            hora: infoConsulta.horarioAgendado
+        })
+
         let divCard = document.createElement("div");
         let divSuperior = document.createElement("div");
         let divInferior = document.createElement("div");
@@ -83,7 +90,7 @@ async function montarConsultas(consultas){
 
     
 
-        if(infoConsulta.statusConsulta === "Agendada"){
+        if(infoConsulta.statusConsulta === "Agendada" || infoConsulta.statusConsulta === "Remarcada"){
             inputDesmarcar.setAttribute("onclick", `montarModalDesmarcarConsulta(${infoConsulta.codeConsultas})`)
             inputDesmarcar.setAttribute("type", "button")
             inputDesmarcar.setAttribute("value", "Desmarcar")
@@ -160,7 +167,7 @@ async function loadResultConsulta(id){
 }
 
 function fecharModal(){
-    let modalbg = document.getElementById("modalDesmarcar");
+    let modalbg = document.getElementById("modal");
 
     modalbg.innerHTML = ''
     modalbg.style.display = 'none'
@@ -187,7 +194,7 @@ async function desmarcarConsulta(id){
 }
 
 function montarModalDesmarcarConsulta(id){
-    let modalbg = document.getElementById("modalDesmarcar");
+    let modalbg = document.getElementById("modal");
     let divgeral = document.createElement("div");
     let div1 = document.createElement("div");
     let div2 = document.createElement("div");
@@ -266,7 +273,177 @@ function montarModalDesmarcarConsulta(id){
     modalbg.appendChild(divgeral)
 }
 
+function adicionaOpcoes(data){
+    let arrData = ['10/06/2022', '13/06/2022', '14/06/2022', '15/06/2022', '16/06/2022', '17/06/2022', '20/06/2022', '21/06/2022']
+    let arrHoras = ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00']
+
+    let indexData = arrData.indexOf(data);
+
+    let arrDataFormatado = arrData.slice(indexData + 1);
+
+    let selectData = document.getElementById("selectData");
+    let selectHora = document.getElementById("selectHora");
+
+    arrDataFormatado.forEach(element => {
+        let options = document.createElement("option")
+        options.value = element;
+        options.text = element;
+
+        selectData.add(options);
+    });
+
+    arrHoras.forEach(element => {
+        let options = document.createElement("option")
+        options.value = element;
+        options.text = element;
+
+        selectHora.add(options);
+    });
+
+}
+
+async function atualizarConsulta(id){
+    let data = document.getElementById("selectData").value;
+    let hora = document.getElementById("selectHora").value;
+    await fetch(`http://localhost:8080/consultas/${id}?newData=${data}&newHour=${hora}&newStatus=Remarcada`, {method: 'PUT'})
+
+    location.reload();
+}
+
 async function remarcarConsulta(id){
+    let options = arrObj.find(ops => ops.consulta == id)
+
+    let modalbg = document.getElementById("modal");
+    let divgeral = document.createElement("div");
+    let div1 = document.createElement("div");
+    let div2 = document.createElement("div");
+    let div3 = document.createElement("div");
+    let div4 = document.createElement("div");
+    let span1 = document.createElement("span");
+    let span2 = document.createElement("span");
+    let span3 = document.createElement("span");
+    let span4 = document.createElement("span");
+    let h4 = document.createElement("h4");
+    let selectData = document.createElement("select");
+    let selectHora = document.createElement("select");
+    let buttonClose = document.createElement("button");
+    let buttonRemarcar = document.createElement("button");
+
+    let textOldData = document.createTextNode(`Data antiga: ${options.data}`);
+    let textOldHora = document.createTextNode(`Data antiga: ${options.hora}`);
+    let textData = document.createTextNode(`Selecionar nova data`)
+    let textHora = document.createTextNode(`Selecionar novo horário`)
+
+    divgeral.style.width = '500px'
+    divgeral.style.height = '250px'
+    divgeral.style.backgroundColor = 'white'
+
+    selectData.id = "selectData"
+    selectHora.id = "selectHora"
+
+    div1.style.width = 'inherit'
+    div1.style.height = '50px'
+    div1.style.display = 'flex'
+    div1.style.borderBottom = '1px solid black'
+    div1.style.alignItems = 'center'
+    div1.style.justifyContent = 'center'
+    
+    div2.style.width = 'inherit'
+    div2.style.height = '100px';
+    div2.style.display = 'flex'
+    div2.style.alignItems = 'center'
+    div2.style.justifyContent = 'space-evenly'
+
+    div3.style.width = 'inherit'
+    div3.style.height = '50px'
+    div3.style.display = 'flex'
+    div3.style.alignItems = 'center'
+    div3.style.justifyContent = 'space-evenly'
+    
+    div4.style.width = 'inherit'
+    div4.style.height = '50'
+    div4.style.display = 'flex'
+    div4.style.alignItems = 'center'
+    div4.style.justifyContent = 'space-evenly'
+
+    span1.style.width = '100%'
+    span1.style.height = '100px';
+    span2.style.width = '100%'
+    span2.style.height = '100px';
+    span1.style.display = 'flex'
+    span1.style.alignItems = 'center'
+    span1.style.justifyContent = 'center'
+    span2.style.display = 'flex'
+    span2.style.alignItems = 'center'
+    span2.style.justifyContent = 'center'
+    span3.style.display = 'flex'
+    span3.style.alignItems = 'center'
+    span3.style.justifyContent = 'center'
+    span3.style.flexDirection = 'column'
+    span4.style.display = 'flex'
+    span4.style.alignItems = 'center'
+    span4.style.justifyContent = 'center'
+    span4.style.flexDirection = 'column'
+    
+    buttonClose.textContent = 'X'
+    buttonRemarcar.textContent = 'Remarcar'
+    h4.textContent = 'Deseja desmarcar essa consulta?'
+    
+    buttonClose.style.marginLeft = '70px'
+    buttonClose.style.width = '20px'
+    buttonClose.style.height = '20px'
+    buttonRemarcar.style.width = '120px'
+    buttonRemarcar.style.height = '25px'
+    buttonRemarcar.setAttribute("onclick", `atualizarConsulta(${id})`)
+    // buttonClose.style.borderRadius = '10px'
+    buttonClose.style.textAlign = 'center'
+    buttonClose.setAttribute("onclick", `fecharModal()`)
+
+
+    selectData.style.backgroundColor = 'lightgrey'
+    selectData.style.width = '150px'
+    selectData.style.height = '35px'
+    selectHora.style.backgroundColor = 'lightgrey'
+    selectHora.style.width = '150px'
+    selectHora.style.height = '35px'
+
+    span1.appendChild(textOldData);
+    span2.appendChild(textOldHora);
+
+    span3.appendChild(textData);
+    span3.appendChild(selectData);
+
+    span4.appendChild(textHora);
+    span4.appendChild(selectHora);
+
+    div1.appendChild(h4);
+    div1.appendChild(buttonClose);
+
+    div2.appendChild(span3)
+    div2.appendChild(span4)
+
+    div3.appendChild(span1);
+    div3.appendChild(span2);
+
+    div4.appendChild(buttonRemarcar)
+
+    divgeral.appendChild(div1);
+    divgeral.appendChild(div3);
+    divgeral.appendChild(div2);
+    divgeral.appendChild(div4);
+
+    modalbg.style.width = 'inherit'
+    modalbg.style.height = '100vh'
+    modalbg.style.position = 'fixed'
+    modalbg.style.top = '0px'
+    modalbg.style.backgroundColor = 'rgba(94,94,94,0.4)'
+    modalbg.style.display = 'flex'
+    modalbg.style.alignItems = 'center'
+    modalbg.style.justifyContent = 'center'
+
+    modalbg.appendChild(divgeral)
+
+    adicionaOpcoes(options.data);
 
 }
 
