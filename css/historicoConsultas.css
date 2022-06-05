@@ -123,3 +123,8 @@ body{
 .nobutton:hover{
     border: 1px solid black;
 }
+
+.buttonRemarcar:hover{
+    border: 1px solid black;
+    background-color: rgba(24, 150, 172, 1);
+}

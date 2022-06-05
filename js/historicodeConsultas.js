@@ -340,6 +340,7 @@ async function remarcarConsulta(id){
 
     selectData.id = "selectData"
     selectHora.id = "selectHora"
+    buttonRemarcar.className = "buttonRemarcar"
 
     div1.style.width = 'inherit'
     div1.style.height = '50px'
@@ -400,6 +401,8 @@ async function remarcarConsulta(id){
     buttonClose.setAttribute("onclick", `fecharModal()`)
 
 
+    buttonRemarcar.style.backgroundColor = 'rgba(24, 150, 172, 0.8)'
+    buttonRemarcar.style.color = 'white'
     selectData.style.backgroundColor = 'lightgrey'
     selectData.style.width = '150px'
     selectData.style.height = '35px'
