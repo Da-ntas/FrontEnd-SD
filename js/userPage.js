@@ -1,10 +1,3 @@
-function userPage(){
-    if(!window.sessionStorage.userName){
-        window.location.assign('./notfound.html')
-    }
-}
-
-
 document.getElementById("historicoConsultas").addEventListener('click', (event) => {
     event.preventDefault();
 

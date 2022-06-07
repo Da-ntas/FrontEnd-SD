@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/login.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body onload="formLogin()">
     <div class="header">
@@ -74,19 +74,19 @@
                     <fieldset class="fieldsetForm">
                         <Legend>Senha para login</Legend>
                     </fieldset>
-                    <input class="inputForm inputCadastro" type="password" name="password" id="password" required>
+                    <input class="inputForm inputCadastro" type="password" name="password" pattern=".{8,}" title="Senha deve conter oito caracteres ou mais" id="password" required>
                 </label>
                 <label class="labelCadastro" for="dataNasc">
                     <fieldset class="fieldsetForm">
                         <Legend>Data de nascimento</Legend>
                     </fieldset>
-                    <input class="inputForm inputCadastro" type="date" name="dataNasc" id="dataNasc"  required>
+                    <input class="inputForm inputCadastro" type="date" min="1920-01-01" max="2004-06-09" name="dataNasc" id="dataNasc"  required>
                 </label>
                 <label class="labelCadastro" for="cpf">
                     <fieldset class="fieldsetForm">
                         <Legend>CPF</Legend>
                     </fieldset>
-                    <input class="inputForm inputCadastro" type="number" name="cpf" id="cpf" placeholder="12345678900" required>
+                    <input class="inputForm inputCadastro" type="text" pattern="\d{11}" title="CPF deve conter 11 numeros" name="cpf" id="cpf" placeholder="12345678900" required>
                 </label>
                 <span class="localizacao flex">
                     <label class="labelCadastro" for="uf">

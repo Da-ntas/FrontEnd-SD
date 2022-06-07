@@ -45,5 +45,10 @@ document.getElementById("logout").addEventListener('click', (event) => {
 document.getElementById("homepage").addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.location.assign('./userlogado.html');
+    if(window.sessionStorage.getItem("codMed")){
+        window.location.assign('./medicologado.html');   
+    }
+    else{
+        window.location.assign('./userlogado.html');
+    }
 })

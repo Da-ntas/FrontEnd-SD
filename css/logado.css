@@ -1,6 +1,7 @@
 
 #agendarConsultas:hover,
-#historicoConsultas:hover{
+#historicoConsultas:hover,
+#prontuariosDia:hover{
     box-shadow: 10px 10px rgba(24, 150, 172, 0.2);
 }
 

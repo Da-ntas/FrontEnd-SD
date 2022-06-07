@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/logado.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/changePass.css">
-    <title>Document</title>
+    <title>Alterar senha</title>
 </head>
 <body onload="carregarForm()">
     <div class="header">
@@ -62,7 +62,7 @@
                     <fieldset>
                         <legend>Nova senha</legend>
                     </fieldset>
-                    <input class="inputForm" type="password" name="newPassword" id="newPassword" required>
+                    <input class="inputForm" type="password" name="newPassword" pattern=".{8,}" title="Senha deve conter oito caracteres ou mais" id="newPassword" required>
                 </label>
                 <input class="submitChangePass" type="submit" value="Alterar" id="change">
             </form>
@@ -71,6 +71,7 @@
         
     <script src="./js/changepass.js"></script>
     <script src="./js/useropts.js"></script>
+    <script src="./js/verificaPage.js"></script>
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>  
 </body>
 </html>

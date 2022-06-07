@@ -153,7 +153,7 @@ document.getElementById("formAgendamento").addEventListener("submit", async (eve
     let data = {
         "dtaAgendada": document.getElementById("dataAgendamento").value,
         "horarioAgendado": document.getElementById("horarioAgendado").value,
-        "codMedico": document.getElementById("nomMedicoAgendado").value,
+        "codMedicoAgendado": document.getElementById("nomMedicoAgendado").value,
         "statusConsulta": "Agendada",
         "idTipoExame": document.getElementById("tipoExame").value,
         "idUnidadeAgendado": document.getElementById("unidadeAgendado").value,

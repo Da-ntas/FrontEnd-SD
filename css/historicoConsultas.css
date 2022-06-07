@@ -8,7 +8,8 @@ body{
 
     width: 100%;
 }
-#cardsConsultas{
+#cardsConsultas,
+#cardsProntuarios{
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -121,10 +122,14 @@ body{
 
 .yesbutton:hover,
 .nobutton:hover{
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.buttonRemarcar{
+    background-color: rgba(24, 150, 172, 0.8);
 }
 
 .buttonRemarcar:hover{
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     background-color: rgba(24, 150, 172, 1);
 }

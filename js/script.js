@@ -1,7 +1,10 @@
 let reqUF = fetch("http://localhost:8080/uf").then((response) => {return (response)})
 // let reaCidades = fetch("http://localHost:8080/cidades/cidadeporuf/").then((response) => {return (response)})
 
+
+
 async function carregarUF(){
+    
     let UF = await (await reqUF).json();
     let uf = document.getElementById("uf");
     document.getElementById("cidade").setAttribute("disabled", "disabled")
@@ -58,18 +61,20 @@ document.getElementById("uf").addEventListener("change", async (event) => {
 document.getElementById("form").addEventListener("submit", async (event) => {
     event.preventDefault();
     
+    let dataForm =  document.getElementById("dataNasc").value
+    let arrData = dataForm.split('-');
+
     let data = {
         nome: document.getElementById("name").value,
         email:  document.getElementById("email").value,
         password: document.getElementById("password").value,
-        dataNasc: document.getElementById("dataNasc").value,
+        dataNasc:`${arrData[2]}/${arrData[1]}/${arrData[0]}`,
         cpf: document.getElementById("cpf").value,
         uf: document.getElementById("uf").value,
         cidade: document.getElementById("cidade").value,
         codMed: null,
         role: "user"
     }
-
     
     let makePost = fetch("http://localhost:8080/user", {
     method: 'POST',
@@ -132,7 +137,6 @@ document.getElementById("formlogin").addEventListener("submit", async (event) =>
                 window.location.assign('./userlogado.html');
             }
             if(user.role === "med"){
-                console.log(user)
                 window.sessionStorage.setItem("codMed", user.codMedico);
                 window.location.assign('./medicologado.html');
             }

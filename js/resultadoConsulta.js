@@ -1,4 +1,5 @@
 function resultadoConsultafunc(){
+
     let sessionResult = JSON.parse(window.sessionStorage.getItem('infosconsulta')) 
     let consulta = sessionResult.opt.consulta
     let information = sessionResult.opt.informations

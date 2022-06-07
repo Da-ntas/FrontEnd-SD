@@ -13,8 +13,17 @@ const ufInfo = fetch(`http://localhost:8080/uf/${codeUf}`).then((response) => { 
 const cidadeInfo = fetch(`http://localhost:8080/cidades/${codeCidade}`).then((response) => { return response});
 
 async function carregarInfos(){
+
+    
     let ufUser = await (await ufInfo).json();
     let cidadeUser = await (await cidadeInfo).json();
+
+    if(window.sessionStorage.getItem("codMed")){
+        document.getElementById("profileText").innerText = `Perfil do Médico`
+    }
+    else{
+        document.getElementById("profileText").innerText = `Perfil de usuário`
+    }
 
     fullName.innerText = nomUser;
     email.innerText = emailUser;
@@ -25,6 +34,11 @@ async function carregarInfos(){
 
 document.getElementById("goback").addEventListener('click', (event) => {
     event.preventDefault();
-
-    window.location.assign('./userlogado.html')
+    
+    if(window.sessionStorage.getItem("codMed")){
+        window.location.assign('./medicologado.html');   
+    }
+    else{
+        window.location.assign('./userlogado.html');
+    }
 })

@@ -3,7 +3,7 @@ function carregarForm(){
     document.getElementById("login").style.display = "block"
 }
 
-document.getElementById("change").addEventListener('click', async (event) => {
+document.getElementById("formlogin").addEventListener('submit', async (event) => {
     event.preventDefault();
     let codUser = Number(window.sessionStorage.getItem("userCode"))
     let oldPass = document.getElementById("oldPassword").value;

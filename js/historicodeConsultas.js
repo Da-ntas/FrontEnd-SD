@@ -400,8 +400,6 @@ async function remarcarConsulta(id){
     buttonClose.style.textAlign = 'center'
     buttonClose.setAttribute("onclick", `fecharModal()`)
 
-
-    buttonRemarcar.style.backgroundColor = 'rgba(24, 150, 172, 0.8)'
     buttonRemarcar.style.color = 'white'
     selectData.style.backgroundColor = 'lightgrey'
     selectData.style.width = '150px'
@@ -466,7 +464,12 @@ document.getElementById("filtrar").addEventListener('change', (event) => {
 document.getElementById("goback").addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.location.assign('./userlogado.html')
+    if(window.sessionStorage.getItem("codMed")){
+        window.location.assign('./medicologado.html');   
+    }
+    else{
+        window.location.assign('./userlogado.html');
+    }
 })
 
 document.getElementById("cardsConsultas").addEventListener('click', (event) => {
