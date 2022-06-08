@@ -52,3 +52,13 @@ document.getElementById("homepage").addEventListener('click', (event) => {
         window.location.assign('./userlogado.html');
     }
 })
+
+
+let h1 = document.getElementById("bemvindo")
+
+if(window.sessionStorage.getItem("codMed")){
+    h1.innerText = `Bem vindo de volta,  Med. ${window.sessionStorage.getItem("userName")}`
+}
+else{
+    h1.innerText = `Bem vindo de volta,  ${window.sessionStorage.getItem("userName")}`
+}

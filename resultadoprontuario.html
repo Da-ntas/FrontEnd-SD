@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/resultadoconsulta.css">
     <link rel="stylesheet" href="./css/historicoConsultas.css">
+    <link rel="stylesheet" href="./css/resultadoProntuario.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/logado.css">
-    <title>Resultado Consulta</title>
+    <title>Document</title>
 </head>
 <body onload="resultadoConsultafunc()">
     <div class="header">
@@ -21,6 +22,7 @@
     <div class="gohome">
         <div class="icons flex">
             <button id="homepage">
+                <h2 id="bemvindo"></h2>
                 <span class="iconify" data-icon="ci:home-alt-fill" data-width="50" data-height="50"></span>
             </button>
         </div>
@@ -28,9 +30,8 @@
 
     <div class="conta flex">
         <div class="icons flex">
-            <h2 id="bemvindo"></h2>
             <button id="goToProfile"><span class="iconify" data-icon="mdi:account-circle" data-width="50" data-height="50"></span></button>
-            <button id="showactions"><span class="iconify" id="arrow-down" data-icon="akar-icons:arrow-down" data-width="30" data-height="30"></span>
+            <button id="showactions"><span class="iconify arrow-down" data-icon="akar-icons:arrow-down" data-width="30" data-height="30"></span>
            </button>
         </div>
         <div class="actions" id="actionsup">
@@ -45,7 +46,8 @@
             </span>
         </div>
     </div>
-    
+
+
     <div class="topo flex" id="topoOps">
         <input type="button" value="Voltar" id="goback">
         <h1>Resultado de consulta</h1>
@@ -67,11 +69,11 @@
                 <span id="tipoExamInfo">
                 </span>
             </span>
-            <span class="nomMedico">
-                <span class="medico">
+            <span class="nomUser">
+                <span class="user">
                     <strong>Médico atendente:</strong>
                 </span>
-                <span id="medicoInfo">
+                <span id="userInfo">
                 </span>
             </span>
             <span class="dataAgendada">
@@ -94,21 +96,21 @@
                 <h2>Descrição</h2>
             </span>
             <hr>
-            <span id="descricao" class="descricaotext"></span>
+            <textarea name="desrc" id="descricaoinput" class="descricaoinputtext" placeholder="Clique aqui para digitar a descrição"required></textarea>
         </div>
         <div class="solicitacoesbox flex">
             <span class="solic flex">
                 <h2>Solicitacoes</h2>
             </span>
             <hr>
-            <span id="solicitacoes" class="solicitacoestext"></span>
+            <textarea name="desrc" id="solicitacoesinput" class="solicitacoesinputtext" placeholder="Clique aqui para digitar as solicitações" required></textarea>
         </div>
+        <input class="submitLogin" type="submit" value="Enviar resultado" id="enviarResultadoConsulta">
     </div>
-    
 
-    <script src="./js/resultadoConsulta.js"></script>
+    <script src="./js/resultadoprontuario.js"></script>
     <script src="./js/useropts.js"></script>
     <script src="./js/verificaPage.js"></script>
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>  
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script> 
 </body>
 </html>

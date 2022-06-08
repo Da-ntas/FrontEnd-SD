@@ -1,6 +1,14 @@
 let codeUser = window.sessionStorage.getItem("userCode");
+let codMedico = window.sessionStorage.getItem("codMed");
+let allconsultas;
 
-let allconsultas = fetch(`http://localhost:8080/consultas/userConsultas/${codeUser}`).then((response) => {return (response)})
+if(!codMedico){
+    allconsultas = fetch(`http://localhost:8080/consultas/userConsultas/${codeUser}`).then((response) => {return (response)})
+}
+else{
+    allconsultas = fetch(`http://localhost:8080/consultas/medico/${codMedico}`).then((response) => {return (response)})
+    document.getElementById("filtrar").style.display = "hidden"
+}
 let consultas;
 let arrConsultas = [];
 let arrObj = [];
@@ -176,7 +184,7 @@ function fecharModal(){
 
 async function desmarcarConsulta(id){
     
-    let consulta = fetch(`http://localhost:8080/consultas/${id}`).then((response) => {return (response)})
+    let consulta = fetch(`http://localhost:8080/consultas/remarcar/${id}`).then((response) => {return (response)})
     let data = await (await consulta).json();
 
     data.statusConsulta = "Desmarcada";

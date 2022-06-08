@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/logado.css">
     <title>Document</title>
 </head>
-<body onload="carregarProntuarios()">
+<body onload="montarProntuarios()">
     <div class="header">
         <!-- NOME DA CLINICA -->
         <span class="nameClinic">
@@ -27,6 +27,7 @@
 
     <div class="conta flex">
         <div class="icons flex">
+            <h2 id="bemvindo"></h2>
             <button id="goToProfile"><span class="iconify" data-icon="mdi:account-circle" data-width="50" data-height="50"></span></button>
             <button id="showactions"><span class="iconify arrow-down" data-icon="akar-icons:arrow-down" data-width="30" data-height="30"></span>
            </button>
@@ -46,6 +47,10 @@
     <div class="topo flex" id="topoOps">
         <input type="button" value="Voltar" id="goback">
         <h1>Prontuário de Consultas</h1>
+        <select name="filtrar" id="filtrar">
+            <option value="Day" selected>Do dia</option>
+            <option value="Week">Da semana</option>
+        </select>
     </div>
     
     <div id="cardsProntuarios" class="flex">
