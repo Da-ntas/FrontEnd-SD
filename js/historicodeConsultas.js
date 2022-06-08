@@ -183,19 +183,7 @@ function fecharModal(){
 }
 
 async function desmarcarConsulta(id){
-    
-    let consulta = fetch(`http://localhost:8080/consultas/remarcar/${id}`).then((response) => {return (response)})
-    let data = await (await consulta).json();
-
-    data.statusConsulta = "Desmarcada";
-
-    fetch(`http://localhost:8080/consultas`, {
-        method: "PUT",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
+    fetch(`http://localhost:8080/consultas/status/${id}?newStatus=Desmarcada`, {method: 'PUT'}).then((response) => {return (response)})
 
     location.reload();
     
@@ -313,7 +301,7 @@ function adicionaOpcoes(data){
 async function atualizarConsulta(id){
     let data = document.getElementById("selectData").value;
     let hora = document.getElementById("selectHora").value;
-    await fetch(`http://localhost:8080/consultas/${id}?newData=${data}&newHour=${hora}&newStatus=Remarcada`, {method: 'PUT'})
+    await fetch(`http://localhost:8080/consultas/remarcar/${id}?newData=${data}&newHour=${hora}&newStatus=Remarcada`, {method: 'PUT'})
 
     location.reload();
 }

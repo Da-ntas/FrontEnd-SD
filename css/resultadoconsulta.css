@@ -54,3 +54,17 @@ hr{
     margin-top: 15px;
     
 }
+
+.downloadFile{
+    
+    width: 100%;
+    height: 100px;
+
+    background-color: rgba(24, 150, 172, 0.8);
+    color: white;
+    font-size: 18px;
+}
+
+.downloadFile:hover{
+    background-color: rgba(24, 150, 172, 1);
+}
