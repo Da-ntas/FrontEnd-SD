@@ -246,26 +246,17 @@ async function carregarProntuariosSemana(consultaFormatada){
 }
 
 async function loadResultProntuario(id){
-    let resultadoConsultaInfo = await fetch(`http://localhost:8080/consultas/${id}`)
-    let resultadoConsulta = await (await resultadoConsultaInfo).json();
-    
-    if(resultadoConsultaInfo.status != 404){
 
         let options = arrConsultas.find(ops => ops.consulta.codeConsultas == id)
 
+
         let objinfos = {
-            opt: options,
-            reslt: resultadoConsulta
+            opt: options
         }
         let txtopts = JSON.stringify(objinfos)
 
-        console.log(txtopts);
         window.sessionStorage.setItem('infosconsulta', txtopts)
         window.location.assign('./resultadoprontuario.html');
-    }
-    else{
-        window.alert("Página indisponivel no momento");
-    }
 }
 
 function filterStatusConsulta(op){
